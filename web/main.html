@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="eel.js"></script>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+    <title>Send messages</title>
+</head>
+<body>
+    <div class="box">
+        <div class="form">
+            <h2>Відправка смс</h2>
+            <div class="input-box">
+                <input type="text", required="required" value="+380982909696" id="number">
+                <span>Номер</span>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input type="text" , required="required" id="text">
+                <span>Текст</span>
+                <i></i>
+            </div>
+            <div class="input-box">
+                <input type="text" , required="required" id="n">
+                <span>Кількість смс</span>
+                <i></i>
+            </div>
+            <input type="submit" value="Надіслати" onclick="create_messages()">
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        async function create_messages(){
+            let number = document.getElementById("number").value;
+            let text = document.getElementById("text").value;
+            let n = document.getElementById("n").value;
+
+            let res = await eel.send_sms(text, number, n)();
+
+            document.getElementById("result").innerHTML = res;
+        }
+
+    </script>
+</body>
+</html>
